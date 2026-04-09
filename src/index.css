@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #fff0eb;
+  --bg-gradient: linear-gradient(135deg, #ffe2bd, #ffd2b3, #ffeec0);
+  --text-light: #1e1b4b;
+  --text-dim: #475569;
+  --primary: #f97316;
+  --primary-hover: #fb923c;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 8px 32px 0 rgba(249, 115, 22, 0.15);
+  --nav-backdrop: blur(12px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-gradient);
+  background-size: 400% 400%;
+  animation: bgAnimation 15s ease infinite;
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes bgAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--nav-backdrop);
+  -webkit-backdrop-filter: var(--nav-backdrop);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 1.1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+nav a:hover {
+  color: var(--text-light);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--nav-backdrop);
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-top: auto;
+}
+
+/* PAGES */
+.page {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 3.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.page:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 45px 0 rgba(249, 115, 22, 0.2);
+}
+
+.page h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #f97316, #eab308, #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shineText 5s linear infinite;
+}
+
+@keyframes shineText {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.page p {
+  font-size: 1.25rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* WEATHER APP */
+.weather-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+input {
+  padding: 0.8rem 1.8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--text-light);
+  font-size: 1.05rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 320px;
+  backdrop-filter: blur(5px);
+}
+
+input::placeholder {
+  color: rgba(30, 27, 75, 0.5);
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+button {
+  padding: 0.8rem 2.2rem;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(135deg, #f97316, #eab308);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+  background: linear-gradient(135deg, #fb923c, #ca8a04);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.error-text {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  font-weight: 500;
+  margin-top: 1rem;
+  animation: shake 0.5s ease;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+.weather-card {
+  margin-top: 2.5rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.weather-card h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
+}
+
+.weather-card p {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(30, 27, 75, 0.08);
+  padding-bottom: 0.8rem;
+}
+
+.weather-card p:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.weather-card strong {
+  color: var(--primary-hover);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .page {
+    padding: 2rem 1.5rem;
+  }
+  
+  .page h1 {
+    font-size: 2.5rem;
+  }
+  
+  nav ul {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+  
+  nav a {
+    font-size: 1rem;
+  }
+}
