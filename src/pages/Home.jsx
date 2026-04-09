@@ -1,17 +1,25 @@
 import { useState } from "react";
+import { FaTerminal } from "react-icons/fa";
 
 function Home() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="page home">
-      <h1>Welcome to My VercApp!</h1>
-        <p>I am XYZ, a 2nd year B.Tech Student of Dhemaji Engineering college and this is my React project.</p>
+    <div className="page">
+      <div className="home-layout">
+        <div className="page-header">
+          <h1>Welcome to My Portfolio!</h1>
+          <p className="subtitle">I am a 2nd year B.Tech Student .</p>
+        </div>
 
-      <h2>Counter: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>
-        Increase
-      </button>
+        <div className="counter-widget">
+          <p className="subtitle">Interactive Counter Widget</p>
+          <div className="counter-value">{count}</div>
+          <button onClick={() => setCount(count + 1)}>
+            <FaTerminal /> Initialize Count
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
