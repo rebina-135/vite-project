@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,7 +22,6 @@ function App() {
           <Route path="/weather" element={<Weather />} />
         </Routes>
       </main>
-
       <Footer />
     </Router>
   );

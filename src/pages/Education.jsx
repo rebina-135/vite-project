@@ -1,12 +1,8 @@
-import React from 'react';
-
-function Education() {
+export default function Education() {
   return (
     <div className="page">
       <h1>Education</h1>
-      <p>My educational background.</p>
+      <p>Details about your education go here.</p>
     </div>
   );
 }
-
-export default Education;

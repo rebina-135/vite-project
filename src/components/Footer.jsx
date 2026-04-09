@@ -1,11 +1,7 @@
-import React from 'react';
-
-function Footer() {
+export default function Footer() {
   return (
     <footer>
-      <p>&copy; 2026 My Portfolio</p>
+      <p>&copy; 2026 Rebina Demo. All rights reserved.</p>
     </footer>
   );
 }
-
-export default Footer;
